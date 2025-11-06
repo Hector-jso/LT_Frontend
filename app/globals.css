@@ -1,26 +1,194 @@
-@import "tailwindcss";
+@import URL(https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap);
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss/preflight";
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+/* Variables CSS si quieres */
+@theme {
+  --color-a: #6da67a;
+  --color-b: #77b885;
+  --color-c: #86c28b;
+  --color-d: #859987;
+  --color-e: #4a4857;
+  --color-f: #696779;
+
+  --color-sa: #527c5c;
+  --color-sb: #598a64;
+  --color-sc: #649268;
+  --color-sd: #647365;
+  --color-se: #373641;
+  --color-sf: #4f4d5b;
+
+  --font-Login: "Kelly Slab";
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes spin-custom {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Sombra personalizada para SVG/elementos que usan currentColor */
+  /* Usar clases: shadow-sa, shadow-sb, shadow-sc, shadow-sd, shadow-se, shadow-sf */
+
+  .shadow-sa-Inicio {
+    filter: drop-shadow(0 1em 0 var(--color-sa)) drop-shadow(0 1em 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 1em 0 var(--color-sa)) drop-shadow(0 1em 0 rgba(0, 0, 0, 0.25));
+  }
+
+  /* Sombra para el color A */
+  .shadow-sa {
+    filter: drop-shadow(0 10px 0 var(--color-sa)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-sa)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-sa.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-sa)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-sa)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-sa.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-sa)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-sa)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombra para el color B */
+  .shadow-sb {
+    filter: drop-shadow(0 10px 0 var(--color-sb)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-sb)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-sb.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-sb)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-sb)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-sb.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-sb)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-sb)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombra para el color C */
+  .shadow-sc {
+    filter: drop-shadow(0 10px 0 var(--color-sc)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-sc)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-sc.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-sc)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-sc)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-sc.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-sc)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-sc)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombra para el color D */
+  .shadow-sd {
+    filter: drop-shadow(0 10px 0 var(--color-sd)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-sd)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-sd.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-sd)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-sd)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-sd.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-sd)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-sd)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombra para el color E */
+  .shadow-se {
+    filter: drop-shadow(0 10px 0 var(--color-se)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-se)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-se.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-se)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-se)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-se.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-se)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-se)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombra para el color F */
+  .shadow-sf {
+    filter: drop-shadow(0 10px 0 var(--color-sf)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 10px 0 var(--color-sf)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+  .shadow-sf.shadow-interactive:hover {
+    filter: drop-shadow(0 15px 0 var(--color-sf)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 15px 0 var(--color-sf)) drop-shadow(0 15px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(-5px);
+  }
+  .shadow-sf.shadow-interactive:active {
+    filter: drop-shadow(0 2px 0 var(--color-sf)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    -webkit-filter: drop-shadow(0 2px 0 var(--color-sf)) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+    transform: translateY(13px);
+  }
+
+  /* Sombras internas*/
+  .shadow_sia {
+    box-shadow: inset 0 10px 0px var(--color-sa), inset 0 20px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow_sib {
+    box-shadow: inset 0 10px 0px var(--color-sb), inset 0210px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow_sic {
+    box-shadow: inset 0 10px 0px var(--color-sc), inset 0 20px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow_sid {
+    box-shadow: inset 0 10px 0px var(--color-sd), inset 0 20px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow_sie {
+    box-shadow: inset 0 10px 0px var(--color-se), inset 0 20px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow_sif {
+    box-shadow: inset 0 10px 0px var(--color-sf), inset 0 20px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Scroll personalizado */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: var(--color-c);
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-b);
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background-color: var(--color-f);
+  }
+
+  .autocomplete-login:-webkit-autofill {
+    transition: background-color 120s ease-in-out 0s; /* evita parpadeo */
+  }
+
+  .animate-spin-loading {
+    animation: spin-custom 3s linear infinite;
+  }
 }
