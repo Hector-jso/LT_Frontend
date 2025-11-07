@@ -50,7 +50,7 @@ export default function RegisterPage() {
         <div className="flex flex-col justify-center items-center w-full h-1/6 ">
           <h1 className="font-Login font-bold text-5xl sm:text-6xl text-c text-center">Registro</h1>
           {Array.isArray(registerErr) && (
-            <div className="flex flex-col items-center mb-2 bg-f shadow-sf px-1">
+            <div className="flex flex-col items-center mb-2 bg-f shadow-sf px-1 w-6/12">
               {registerErr.map((error, i) => (
                 <span key={i} className="text-c font-Login text-sm mb-0.5">
                   {error}

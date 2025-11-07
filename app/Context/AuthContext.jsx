@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, useContext, useEffect } from "react";
-import { loginRequest, registerRequest, verityTokenRequet } from "../api/auth";
+import { loginRequest, registerRequest, verityTokenRequet } from "@/app/api/auth.js";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
@@ -23,26 +23,33 @@ export const AuthProvider = ({ children }) => {
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
-      console.log(res.data);
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      setErrors(error.response.data.errors);
-      console.log("Error en el registro:", error);
+      if (Array.isArray(error.response.data.errors)) {
+        return setErrors(error.response.data.errors);
+      }
+      if (error.response.data?.errors){
+        setErrors([error.response.data.message]);
+      }
+      setErrors([error.response.data.errors]);
     }
   };
 
   const signin = async (user) => {
     try {
       const res = await loginRequest(user);
+      
       setUser(res.data);
       setIsAuthenticated(true);
-      console.log(res);
     } catch (error) {
-      if (Array.isArray(error.response.data)) {
+      if (Array.isArray(error.response.data.errors)) {
         return setErrors(error.response.data.errors);
       }
-      setErrors([error.response.data.message]);
+      if (error.response.data?.errors){
+        setErrors([error.response.data.message]);
+      }
+      setErrors([error.response.data.errors]);
     }
   };
 
@@ -80,6 +87,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setUser(null);
         setLoading(false);
+        return error;
       }
     }
     checkLogin();

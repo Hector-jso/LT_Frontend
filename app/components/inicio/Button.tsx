@@ -18,7 +18,7 @@ export function ButtonInicio(props: ButtonInicioProps) {
 
 export function ButtonLogin(props: ButtonInicioProps) {
   return (
-    <div className="block w-3/6 sm:w-4/12 lg:w-2/12 h-5/12 mb-6">
+    <div className="block w-3/6 sm:w-4/12 lg:w-3/12 h-5/12 mb-6">
       <button className="w-full h-full bg-c shadow-sc shadow-interactive font-Login font-black text-xl sm:text-2xl lg:text-3xl text-e" type="submit" onClick={props.onClick}>
         {props.text}
       </button>
